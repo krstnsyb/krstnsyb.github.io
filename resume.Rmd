@@ -1,19 +1,29 @@
-```{r image-ref-for-in-text, echo = FALSE, message=FALSE, fig.align='center', out.width='0.75\\linewidth', fig.pos='H'}
-knitr::include_graphics("images/cv_1.jpg")
+---
+title: ""
+output: html_document
+---
+<body style="background-color:#EAEDF2;">
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(echo = TRUE)
 ```
 
-```{r image2-ref-for-in-text, echo = FALSE, message=FALSE, fig.align='center', out.width='0.75\\linewidth', fig.pos='H'}
+```{r cv_1, echo=FALSE, fig.align='center', message=FALSE, out.width="80%", out.extra='class="border shadowed"'}
+include_graphics("images/cv_1.jpg")
+```
+
+```{r cv_2, echo=FALSE, fig.align='center', message=FALSE, out.width="80%"}
 knitr::include_graphics("images/cv_2.jpg")
 ```
 
-```{r image3-ref-for-in-text, echo = FALSE, message=FALSE, fig.align='center', out.width='0.75\\linewidth', fig.pos='H'}
+```{r cv_3, echo=FALSE, fig.align='center', message=FALSE, out.width="80%"}
 knitr::include_graphics("images/cv_3.jpg")
 ```
 
-```{r image4-ref-for-in-text, echo = FALSE, message=FALSE, fig.align='center', out.width='0.75\\linewidth', fig.pos='H'}
+```{r cv_4, echo=FALSE, fig.align='center', message=FALSE, out.width="80%"}
 knitr::include_graphics("images/cv_4.jpg")
 ```
 
-```{r image5-ref-for-in-text, echo = FALSE, message=FALSE, fig.align='center', out.width='0.75\\linewidth', fig.pos='H'}
+```{r cv_5, echo=FALSE, fig.align='center', message=FALSE, out.width="80%"}
 knitr::include_graphics("images/cv_5.jpg")
 ```
