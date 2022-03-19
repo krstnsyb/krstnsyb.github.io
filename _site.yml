@@ -6,12 +6,16 @@ output_dir: "."
 navbar:
   title: "Home"
   right:
+    - text: "Professional Documents"
+      menu:
+          - text: "CV"
+            href: whatever.html
     - text: "About"
       href: about.html
     - icon: fa-envelope fa-lg
       href: mailto:<elger005@umn.edu>
-    - icon: fa-github fa-lg
-      href: http://github.com/krstnsyb/
+    - icon: fa-brands fa-linkedin
+      href: https://www.linkedin.com/in/kelgersma/
 output:  
    html_document:
     theme: flatly

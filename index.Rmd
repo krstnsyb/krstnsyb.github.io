@@ -1,21 +1,13 @@
 ---
-title: "Your Name"
+title: Kristin Elgersma
 ---
 
 <div style= "float : left; position : relative; top: 0px; width : 450px; height : 360px; padding-right: 24px; margin-bottom : 0px">
-![Your Photo](./path_to_photo)
+![Your Photo](./elgersma headshot.jpg)
 
 </div>
 
 <font size = "4"> 
-*You Bio Here*  
+I am a PhD candidate at the University of Minnesota's School of Nursing, where I am studying human milk feeding and direct breastfeeding for infants with congenital heart disease (CHD).  hold previous DM and MM degrees in Piano Performance and Pedagogy from Northwestern University, but was inspired to change careers due to my experience as a parent of a child with CHD. 
 </font>  
   
-  
-  
-<font size = "4">
-*Paragraph 2*  
-</font>
-
->"A quote" - Somebody
-

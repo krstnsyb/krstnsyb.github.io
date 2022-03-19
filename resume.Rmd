@@ -1,0 +1,23 @@
+```{r setup, include = FALSE, echo = FALSE}
+```
+
+
+```{r image-ref-for-in-text, echo = FALSE, message=FALSE, fig.align='center', out.width='0.75\\linewidth', fig.pos='H'}
+knitr::include_graphics("images/cv_1.jpg")
+```
+
+```{r image2-ref-for-in-text, echo = FALSE, message=FALSE, fig.align='center', out.width='0.75\\linewidth', fig.pos='H'}
+knitr::include_graphics("images/cv_2.jpg")
+```
+
+```{r image3-ref-for-in-text, echo = FALSE, message=FALSE, fig.align='center', out.width='0.75\\linewidth', fig.pos='H'}
+knitr::include_graphics("images/cv_3.jpg")
+```
+
+```{r image4-ref-for-in-text, echo = FALSE, message=FALSE, fig.align='center', out.width='0.75\\linewidth', fig.pos='H'}
+knitr::include_graphics("images/cv_4.jpg")
+```
+
+```{r image5-ref-for-in-text, echo = FALSE, message=FALSE, fig.align='center', out.width='0.75\\linewidth', fig.pos='H'}
+knitr::include_graphics("images/cv_5.jpg")
+```
