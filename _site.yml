@@ -1,4 +1,4 @@
-name: "Homework 5 Website"
+name: "Personal Website"
 header-includes: 
   \usepackage{graphicx}
   \usepackage{float}
