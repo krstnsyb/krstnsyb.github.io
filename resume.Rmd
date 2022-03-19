@@ -8,22 +8,22 @@ library(knitr)
 opts_chunk$set(echo = TRUE)
 ```
 
-```{r cv_1, echo=FALSE, fig.align='center', message=FALSE, out.width="80%", out.extra='class="border shadowed"'}
+```{r cv_1, echo=FALSE, fig.align='center', message=FALSE}
 include_graphics("images/cv_1.jpg")
 ```
 
-```{r cv_2, echo=FALSE, fig.align='center', message=FALSE, out.width="80%"}
+```{r cv_2, echo=FALSE, fig.align='center', message=FALSE}
 knitr::include_graphics("images/cv_2.jpg")
 ```
 
-```{r cv_3, echo=FALSE, fig.align='center', message=FALSE, out.width="80%"}
+```{r cv_3, echo=FALSE, fig.align='center', message=FALSE}
 knitr::include_graphics("images/cv_3.jpg")
 ```
 
-```{r cv_4, echo=FALSE, fig.align='center', message=FALSE, out.width="80%"}
+```{r cv_4, echo=FALSE, fig.align='center', message=FALSE}
 knitr::include_graphics("images/cv_4.jpg")
 ```
 
-```{r cv_5, echo=FALSE, fig.align='center', message=FALSE, out.width="80%"}
+```{r cv_5, echo=FALSE, fig.align='center', message=FALSE}
 knitr::include_graphics("images/cv_5.jpg")
 ```
