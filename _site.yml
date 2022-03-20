@@ -10,6 +10,8 @@ navbar:
       menu:
           - text: "CV"
             href: resume.html
+          - text: "Publications"
+            href: resume.html
     - text: "About"
       href: about.html
     - icon: fa-envelope fa-lg
