@@ -1,8 +1,8 @@
 ---
 title: Kristin Elgersma
 ---
-
-<div style= "float : left; position : relative; top: 0px; width : 250px; height : 300px; padding-right: 24px; margin-bottom : 0px">
+<br />
+<div style= "float : left; position : relative; top: 0px; width : 300px; height : 370px; padding-right: 24px; margin-bottom : 0px">
 ![](./elgersma headshot.jpg)
 
 </div>
