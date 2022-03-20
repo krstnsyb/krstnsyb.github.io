@@ -10,10 +10,9 @@ opts_chunk$set(echo = TRUE)
 \
 <font size = "4.5"> 
 Please visit [my Google Scholar page](https://scholar.google.com/citations?hl=en&user=sJ61GkMAAAAJ&view_op=list_works&authuser=1&sortby=pubdate) for an up-to-date list of publication. 
-</font>
 \
 
-**Recent conference posters** with results of my work can be seen below:
+**Recent conference posters** can be seen below:
 
 1. Wayfinding through the "ocean of the great unknown": How lactating parents establish a direct breastfeeding relationship with an infant with critical congenital heart disease
 <body style="background-color:#EAEDF2;">
@@ -29,3 +28,5 @@ include_graphics("images/wayfinding_poster.jpg")
 ```{r delphi poster, echo=FALSE, fig.align='center', message=FALSE}
 include_graphics("images/delphi_poster.jpg")
 ```
+
+</font>

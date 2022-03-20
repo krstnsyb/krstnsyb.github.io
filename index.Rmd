@@ -2,7 +2,7 @@
 title: Kristin Elgersma
 ---
 <br />
-<div style= "float : left; position : relative; top: 0px; width : 300px; height : 370px; padding-right: 24px; margin-bottom : 0px">
+<div style= "float : left; position : relative; top: 0px; width : 400px; height : 500px; padding-right: 24px; margin-bottom : 0px">
 ![](./elgersma headshot.jpg)
 
 </div>
@@ -12,7 +12,6 @@ I am a PhD candidate at the University of Minnesota's School of Nursing, where I
 <br />
 <br />
 I work as a graduate assistant and nurse interventionist for Dr. Anne Chevalier McKechnie at the University of Minnesota, and am the Co-Investigator on two funded grants to developing and testing eHealth enhanced care programs to support parents with a fetal diagnosis of CHD.  [Click here](https://nursing.umn.edu/research/research-projects/preparing-heart-and-mind) to learn more about our ongoing studies.  
-<br />
 <br />
 My current projects include a funded qualitative study, investigating how lactating parents are able to establish a direct breastfeeding relationship with an infant hospitalized after birth for CHD. Please [click here](publications.html) to find a poster of the initial results from this study. My dissertation is a secondary analysis of data from the National Pediatric Quality Improvement Collaborative titled "Human milk and direct breastfeeding for infants with single ventricle congenital heart disease: An analysis of prevalence, supportive and limiting factors, and impact on key outcomes." 
 <br />
