@@ -7,16 +7,16 @@ title: Kristin Elgersma
 
 </div>
 
-<font size = "3.5"> 
+<font size = "4"> 
 I am a PhD candidate at the University of Minnesota's School of Nursing, where I study human milk feeding and direct breastfeeding for infants with congenital heart disease (CHD). I hold previous DM and MM degrees in Piano Performance and Pedagogy from Northwestern University, but was inspired to change careers due to my own experience as a parent of a child unexpectedly diagnosed with CHD after birth. 
-\
-\
+<br />
+<br />
 I work as a graduate assistant and nurse interventionist for Dr. Anne Chevalier McKechnie at the University of Minnesota, and am the Co-Investigator on two funded grants to developing and testing eHealth enhanced care programs to support parents with a fetal diagnosis of CHD.  [Click here](https://nursing.umn.edu/research/research-projects/preparing-heart-and-mind) to learn more about our ongoing studies.  
-\
-\
+<br />
+<br />
 My current projects include a funded qualitative study, investigating how lactating parents are able to establish a direct breastfeeding relationship with an infant hospitalized after birth for CHD. Please [click here](publications.html) to find a poster of the initial results from this study. My dissertation is a secondary analysis of data from the National Pediatric Quality Improvement Collaborative titled "Human milk and direct breastfeeding for infants with single ventricle congenital heart disease: An analysis of prevalence, supportive and limiting factors, and impact on key outcomes." 
-\
-\
+<br />
+<br />
 In my previous life as a musician, I have nearly 20 years of experience teaching in higher education and have presented performances, workshops, and guest lectures at institutions and universities around the United States and abroad. If you're interested in seeing some of my previous work in music, please feel free to visit [my personal website](https://www.kristinelgersma.com/).
 
 </font>  
