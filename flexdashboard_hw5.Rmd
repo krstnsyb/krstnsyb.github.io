@@ -1,6 +1,6 @@
 ---
-title: "Your Title Here"
-author: "Your Name"
+title: "Interactive Plots"
+author: "Kristin Elgersma"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -14,6 +14,7 @@ library(gt)
 library(paletteer)
 library(plotly)
 library(flexdashboard)
+library(scales)
 
 #Working directory for .RMD
 knitr::opts_knit$set(echo = TRUE,
@@ -37,9 +38,10 @@ knitr::opts_chunk$set(
 
 
 ```{r data_read, include = FALSE}
-#Read in the nyc airbnb data set
-#nyc_airbnb.df <- read_csv("./data/nyc_airbnb.csv", show_col_types = FALSE) %>%
-
+#Read in the clean COVID-19 data set
+covid <- read_csv("./data/covid_final.csv", show_col_types = FALSE)
+instacart <- read_csv("./data/instacart.csv", show_col_types = FALSE)
+df <- read_rds("./data/df.rds")
 ```
 
 Column {data-width=650}
@@ -47,8 +49,50 @@ Column {data-width=650}
 
 ### Chart A
 
-```{r}
+```{r warning=FALSE, message=FALSE}
+#create data frame with new cases and 7 day average by date
+dat <- covid %>%
+  group_by(date) %>%
+  summarise(
+    case = sum(new_cases),
+    case7 = sum(new_cases_7day)
+  )
 
+#create plot
+covid.gg <- dat %>%
+  mutate(text_label = str_c("\nNew cases - ",  case, #adding text for the tooltip
+                            "\n7-day case average - ", case7,
+                            "\nDate - ", date)) %>%
+  ggplot() +
+  geom_col(aes(x = date, y = case, color = case, text = text_label)) + #for new cases per day
+  scale_color_paletteer_c("grDevices::Lajolla") +
+  theme_minimal() +
+  theme(
+    legend.position = "none", #the legend really would not work, so I took it out
+    axis.title.x = element_text(vjust = -0.8), #position x axis title
+    axis.title.y = element_text(vjust = 3)
+  ) +
+  geom_line(aes(x = date, y = case7)) + #add 7-day rolling average as a line
+  scale_y_continuous(labels = label_number(suffix = " M", scale = 1e-6)) + #suffix to truncate y axis
+  scale_x_date(
+    date_labels = "%b %Y", #only show month and year
+    date_breaks = "3 months" #add regular breaks
+  ) +
+  labs(
+    x = "February 2020 - February 2022",
+    y = "New cases per day",
+    title = "Figure 2. Global rolling average of new COVID-19 cases per day."
+  ) +
+  annotate("text", ##manually add text to describe 7-day average line, since none of the legends worked well when added to ggplotly
+    x = as.Date("2020-05-01"),
+    y = 1000000,
+    label = "Black line = 7-day average",
+    size = 3,
+    hjust = 0
+  )
+
+ggplotly(covid.gg, tooltip = "text") 
+  
 
 ```
 
@@ -57,13 +101,82 @@ Column {data-width=350}
 
 ### Chart B
 
-```{r}
+```{r warning=FALSE, message=FALSE, fig.height=20}
+#Create the data set for the ggplot
+instacart2 <- instacart %>%
+  group_by(aisle) %>%
+  summarise(n = n_distinct((order_id))) %>%
+  mutate(aisle = str_to_title(aisle)) %>%
+  mutate(aisle = as.factor(aisle)) %>%
+  mutate(aisle = (fct_reorder(aisle, n))) %>%
+  mutate(n2 = n) %>% #when I used the "n" variable for both x and fill in the ggplot, I couldn't get the tooltip to work, so I created a separate n2 column to use with the fill aesthetic 
+  rename(Aisle = aisle, 
+         Orders = n)
+
+# Visualization
+insta.gg <-instacart2 %>%
+  ggplot(aes(x = Orders, y = Aisle, fill = n2)) +
+  geom_col() +
+  scale_fill_gradientn( # choose custom colors and cut points for color scale
+    name = "Number of orders",
+    colors = c("gray", "skyblue4", "goldenrod", "orchid"),
+    values = scales::rescale(c(0, 2000, 2001, 7000, 7001, 11000, 11001, max(instacart2$n2)))
+  ) +
+  labs(
+    title = "Figure 2. Number of Instacart orders per aisle",
+    x = "Number of orders",
+    y = "Aisle"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+ggplotly(insta.gg, tooltip = c("Aisle", "Orders")) #I couldn't get the text label thing to leave out the fill aesthetic, so I just chose which variables I wanted to include here 
 
 ```
 
 ### Chart C
 
-```{r}
+**Note:** I had issues getting plotly to do what I wanted it to do. It needs a legend, but automatically repeats the legend 4 times for each subplot. I can see from googling that you could create 4 individual figures and then hide the legend for 3 of them, but I didn't have the time to completely work this out. I also wanted each subplot to have its own title, and again can see that you could do this in independent traces or something like that, but spent too much time on it and couldn't get it to line up (when I added a subtitle, the information for the top left graph disappeared). I also don't like the fact that the yellow text in the hover text is hard to read, and couldn't find an easy way to fix it. 
 
+So, in sum, I know that there are issues with this chart, but I spent a ton of time trying to figure out how to fix them and couldn't. I'll just take the points off, and probably would opt to do this type of chart in ggplot in the future. From what I've read, it seems that maybe plotly isn't the best for faceting. 
+
+```{r warning = FALSE, message = FALSE, fig.height = 8}
+df2 <- df %>%
+  pivot_longer(
+    cols = c(sample_size_mean, sample_size_sd, data_value_mean, data_value_sd),
+    names_to = "measure",
+    values_to = "value"
+  ) %>%
+  mutate(
+    measure = fct_recode(measure,
+      "Sample size (mean)" = "sample_size_mean",
+      "Sample size (SD)" = "sample_size_sd",
+      "Proportion (mean)" = "data_value_mean",
+      "Proportion (SD)" = "data_value_sd"
+    ),
+    measure = fct_relevel(measure, c(
+      "Sample size (mean)", "Sample size (SD)",
+      "Proportion (mean)", "Proportion (SD)"
+    ))
+  ) %>%
+  droplevels()
+
+df2 %>%
+  group_by(measure) %>%
+  do(p = plot_ly(.,
+    x = ~year,
+    y = ~value,
+    color  = ~response,
+    type   = "bar",
+    colors = "viridis", alpha = 0.5
+  ) %>%
+  layout(
+    title  = "Figure 3. Minnesota health in 2002, 2006, and 2010",
+    xaxis  = list(title = "Year"),
+    yaxis  = list(title = " "),
+    xaxis = list(type = "category"),
+    showlegend = FALSE
+  )) %>%
+  subplot(nrows = 2, shareX = TRUE, shareY = TRUE)
 ```
 
