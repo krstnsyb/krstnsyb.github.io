@@ -69,8 +69,7 @@ covid.gg <- dat %>%
   theme_minimal() +
   theme(
     legend.position = "none", #the legend really would not work, so I took it out
-    axis.title.x = element_text(vjust = -0.8), #position x axis title
-    axis.title.y = element_text(vjust = 3)
+    axis.text.y = element_text(size = 2), #position x axis title
   ) +
   geom_line(aes(x = date, y = case7)) + #add 7-day rolling average as a line
   scale_y_continuous(labels = label_number(suffix = " M", scale = 1e-6)) + #suffix to truncate y axis
@@ -81,7 +80,7 @@ covid.gg <- dat %>%
   labs(
     x = "February 2020 - February 2022",
     y = "New cases per day",
-    title = "Figure 2. Global rolling average of new COVID-19 cases per day."
+    title = "Global rolling average of new COVID-19 cases per day."
   ) +
   annotate("text", ##manually add text to describe 7-day average line, since none of the legends worked well when added to ggplotly
     x = as.Date("2020-05-01"),
@@ -121,7 +120,7 @@ df2 <- df %>%
 
 df2 %>%
   group_by(measure) %>%
-  do(p = plot_ly(.,
+  plot_ly(.,
     x = ~year,
     y = ~value,
     color  = ~response,
@@ -129,16 +128,15 @@ df2 %>%
     colors = "viridis", alpha = 0.5
   ) %>%
   layout(
-    title  = "Figure 3. Minnesota health in 2002, 2006, and 2010",
+    title  = "Mean sample size of Minnesotans per location reporting excellent, good, or poor health",
     xaxis  = list(title = "Year"),
     yaxis  = list(title = " "),
     xaxis = list(type = "category"),
     showlegend = FALSE
-  )) %>%
-  subplot(nrows = 2, shareX = TRUE, shareY = TRUE)
+  )
 ```
 
-Column
+Column {data-height=500}
 -----------------------------------------------------------------------
 
 ### Chart C
@@ -165,7 +163,7 @@ insta.gg <-instacart2 %>%
     values = scales::rescale(c(0, 2000, 2001, 7000, 7001, 11000, 11001, max(instacart2$n2)))
   ) +
   labs(
-    title = "Figure 2. Number of Instacart orders per aisle",
+    title = "Number of Instacart orders per aisle",
     x = "Number of orders",
     y = "Aisle"
   ) +
