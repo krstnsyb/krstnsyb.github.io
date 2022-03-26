@@ -69,7 +69,7 @@ covid.gg <- dat %>%
   theme_minimal() +
   theme(
     legend.position = "none", #the legend really would not work, so I took it out
-    axis.text.y = element_text(size = 2), #position x axis title
+    axis.text.y = element_text(size = 1), 
   ) +
   geom_line(aes(x = date, y = case7)) + #add 7-day rolling average as a line
   scale_y_continuous(labels = label_number(suffix = " M", scale = 1e-6)) + #suffix to truncate y axis
@@ -91,7 +91,6 @@ covid.gg <- dat %>%
   )
 
 ggplotly(covid.gg, tooltip = "text") 
-  
 
 ```
 
@@ -128,7 +127,7 @@ df2 %>%
     colors = "viridis", alpha = 0.5
   ) %>%
   layout(
-    title  = "Mean sample size of Minnesotans per location reporting excellent, good, or poor health",
+    title  = "Mean sample size of Minnesotans per location reporting \n excellent, good, or poor health",
     xaxis  = list(title = "Year"),
     yaxis  = list(title = " "),
     xaxis = list(type = "category"),
@@ -136,12 +135,12 @@ df2 %>%
   )
 ```
 
-Column {data-height=500}
+Column
 -----------------------------------------------------------------------
 
 ### Chart C
 
-```{r echo = FALSE, fig.height = 20}
+```{r echo = FALSE}
 #Create the data set for the ggplot
 instacart2 <- instacart %>%
   group_by(aisle) %>%
@@ -170,7 +169,8 @@ insta.gg <-instacart2 %>%
   theme_minimal() +
   theme(legend.position = "none")
 
-ggplotly(insta.gg, tooltip = c("Aisle", "Orders")) #I couldn't get the text label thing to leave out the fill aesthetic, so I just chose which variables I wanted to include here 
+ggplotly(insta.gg, tooltip = c("Aisle", "Orders"),
+         height = 1400) #I couldn't get the text label thing to leave out the fill aesthetic, so I just chose which variables I wanted to include here 
 
 ```
 
