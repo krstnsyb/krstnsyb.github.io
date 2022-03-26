@@ -44,12 +44,12 @@ instacart <- read_csv("./data/instacart.csv", show_col_types = FALSE)
 df <- read_rds("./data/df.rds")
 ```
 
-Column {data-width=650}
+Column 
 -----------------------------------------------------------------------
 
 ### Chart A
 
-```{r warning=FALSE, message=FALSE}
+```{r echo = FALSE}
 #create data frame with new cases and 7 day average by date
 dat <- covid %>%
   group_by(date) %>%
@@ -96,51 +96,9 @@ ggplotly(covid.gg, tooltip = "text")
 
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
-
 ### Chart B
 
-```{r warning=FALSE, message=FALSE, fig.height=20}
-#Create the data set for the ggplot
-instacart2 <- instacart %>%
-  group_by(aisle) %>%
-  summarise(n = n_distinct((order_id))) %>%
-  mutate(aisle = str_to_title(aisle)) %>%
-  mutate(aisle = as.factor(aisle)) %>%
-  mutate(aisle = (fct_reorder(aisle, n))) %>%
-  mutate(n2 = n) %>% #when I used the "n" variable for both x and fill in the ggplot, I couldn't get the tooltip to work, so I created a separate n2 column to use with the fill aesthetic 
-  rename(Aisle = aisle, 
-         Orders = n)
-
-# Visualization
-insta.gg <-instacart2 %>%
-  ggplot(aes(x = Orders, y = Aisle, fill = n2)) +
-  geom_col() +
-  scale_fill_gradientn( # choose custom colors and cut points for color scale
-    name = "Number of orders",
-    colors = c("gray", "skyblue4", "goldenrod", "orchid"),
-    values = scales::rescale(c(0, 2000, 2001, 7000, 7001, 11000, 11001, max(instacart2$n2)))
-  ) +
-  labs(
-    title = "Figure 2. Number of Instacart orders per aisle",
-    x = "Number of orders",
-    y = "Aisle"
-  ) +
-  theme_minimal() +
-  theme(legend.position = "none")
-
-ggplotly(insta.gg, tooltip = c("Aisle", "Orders")) #I couldn't get the text label thing to leave out the fill aesthetic, so I just chose which variables I wanted to include here 
-
-```
-
-### Chart C
-
-**Note:** I had issues getting plotly to do what I wanted it to do. It needs a legend, but automatically repeats the legend 4 times for each subplot. I can see from googling that you could create 4 individual figures and then hide the legend for 3 of them, but I didn't have the time to completely work this out. I also wanted each subplot to have its own title, and again can see that you could do this in independent traces or something like that, but spent too much time on it and couldn't get it to line up (when I added a subtitle, the information for the top left graph disappeared). I also don't like the fact that the yellow text in the hover text is hard to read, and couldn't find an easy way to fix it. 
-
-So, in sum, I know that there are issues with this chart, but I spent a ton of time trying to figure out how to fix them and couldn't. I'll just take the points off, and probably would opt to do this type of chart in ggplot in the future. From what I've read, it seems that maybe plotly isn't the best for faceting. 
-
-```{r warning = FALSE, message = FALSE, fig.height = 8}
+```{r echo = FALSE}
 df2 <- df %>%
   pivot_longer(
     cols = c(sample_size_mean, sample_size_sd, data_value_mean, data_value_sd),
@@ -178,5 +136,43 @@ df2 %>%
     showlegend = FALSE
   )) %>%
   subplot(nrows = 2, shareX = TRUE, shareY = TRUE)
+```
+
+Column
+-----------------------------------------------------------------------
+
+### Chart C
+
+```{r echo = FALSE, fig.height = 20}
+#Create the data set for the ggplot
+instacart2 <- instacart %>%
+  group_by(aisle) %>%
+  summarise(n = n_distinct((order_id))) %>%
+  mutate(aisle = str_to_title(aisle)) %>%
+  mutate(aisle = as.factor(aisle)) %>%
+  mutate(aisle = (fct_reorder(aisle, n))) %>%
+  mutate(n2 = n) %>% #when I used the "n" variable for both x and fill in the ggplot, I couldn't get the tooltip to work, so I created a separate n2 column to use with the fill aesthetic 
+  rename(Aisle = aisle, 
+         Orders = n)
+
+# Visualization
+insta.gg <-instacart2 %>%
+  ggplot(aes(x = Orders, y = Aisle, fill = n2)) +
+  geom_col() +
+  scale_fill_gradientn( # choose custom colors and cut points for color scale
+    name = "Number of orders",
+    colors = c("gray", "skyblue4", "goldenrod", "orchid"),
+    values = scales::rescale(c(0, 2000, 2001, 7000, 7001, 11000, 11001, max(instacart2$n2)))
+  ) +
+  labs(
+    title = "Figure 2. Number of Instacart orders per aisle",
+    x = "Number of orders",
+    y = "Aisle"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+ggplotly(insta.gg, tooltip = c("Aisle", "Orders")) #I couldn't get the text label thing to leave out the fill aesthetic, so I just chose which variables I wanted to include here 
+
 ```
 
