@@ -4,7 +4,7 @@ author: "Kristin Elgersma"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
-    vertical_layout: scroll
+    vertical_layout: fill
 ---
 
 ```{r setup, include = FALSE, echo = FALSE}
@@ -20,19 +20,6 @@ library(scales)
 knitr::opts_knit$set(echo = TRUE,
                      root.dir = rprojroot::find_rstudio_root_file())
 
-#Controlling figure output in markdown
-knitr::opts_chunk$set(
-#  fig.height =   
-  fig.width = 6,
-#  fig.asp = .5,
-  out.width = "90%",
-#  out.height = 
- fig.align  = "center",
-  cache = FALSE,
-  eval  = TRUE,
-  echo  = TRUE,
-  warning = FALSE
-)
 
 ```
 
@@ -170,7 +157,8 @@ insta.gg <-instacart2 %>%
   theme(legend.position = "none")
 
 ggplotly(insta.gg, tooltip = c("Aisle", "Orders"),
-         height = 1400) #I couldn't get the text label thing to leave out the fill aesthetic, so I just chose which variables I wanted to include here 
+         height = 1400) 
+#I couldn't get the text label thing to leave out the fill aesthetic, so I just chose which variables I wanted to include here 
 
 ```
 
