@@ -32,7 +32,7 @@ instacart <- read_csv("./data/instacart.csv", show_col_types = FALSE)
 df <- read_rds("./data/df.rds")
 ```
 
-Column 
+Column Column {data-width=400}
 -----------------------------------------------------------------------
 
 ### Chart A
