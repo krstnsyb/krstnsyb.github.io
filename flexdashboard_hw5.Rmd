@@ -5,6 +5,7 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: scroll
+    smooth_scroll: true
 ---
 
 ```{r setup, include = FALSE, echo = FALSE}
@@ -123,6 +124,8 @@ df2 %>%
 ```
 
 Column
+
+Inputs {.sidebar}
 -----------------------------------------------------------------------
 
 ### Chart C
