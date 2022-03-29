@@ -140,7 +140,7 @@ instacart2 <- instacart %>%
          Orders = n)
 
 # Visualization
-insta.gg <-instacart2 %>%
+insta.gg <- instacart2 %>%
   ggplot(aes(x = Orders, y = Aisle, fill = n2)) +
   geom_col() +
   scale_fill_gradientn( # choose custom colors and cut points for color scale
