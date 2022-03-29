@@ -5,6 +5,7 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+    smooth_scroll: true
 ---
 
 ```{r setup, include = FALSE, echo = FALSE}
@@ -31,7 +32,7 @@ instacart <- read_csv("./data/instacart.csv", show_col_types = FALSE)
 df <- read_rds("./data/df.rds")
 ```
 
-Column {data-width=400}
+Column 
 -----------------------------------------------------------------------
 
 ### Chart A
@@ -122,7 +123,7 @@ df2 %>%
   )
 ```
 
-Column {data-width=600}
+Column 
 -----------------------------------------------------------------------
 
 ### Chart C
